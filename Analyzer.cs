@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataProcessingTemplate
 {
@@ -54,7 +52,10 @@ namespace DataProcessingTemplate
 
             // sort by freq
 
-            // various
+            var sortedDict = from entry in kanjiFreq orderby entry.Value descending select entry;
+            kanjiFreq = sortedDict.ToDictionary(pair => pair.Key, pair => pair.Value); ;
+
+            // various stats
 
             totalUniqueKanjiPercent = (totalUniqueKanji / 2200.0) * 100;
         }
